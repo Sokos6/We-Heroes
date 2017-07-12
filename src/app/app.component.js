@@ -12,9 +12,22 @@ var Hero = (function () {
     return Hero;
 }());
 exports.Hero = Hero;
+var HEROES = [
+    { id: 11, name: 'Mr. Freeze' },
+    { id: 12, name: 'Narco' },
+    { id: 13, name: 'Bombasto' },
+    { id: 14, name: 'Celeritas' },
+    { id: 15, name: 'Magneta' },
+    { id: 16, name: 'RubberMan' },
+    { id: 17, name: 'Dynama' },
+    { id: 18, name: 'Dr IQ' },
+    { id: 19, name: 'Magma' },
+    { id: 20, name: 'Tornado' }
+];
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'We Heroes';
+        this.heroes = HEROES;
         this.hero = {
             id: 1,
             name: 'Windstorm'
@@ -25,7 +38,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n  <h1>{{title}}</h1>\n  <h2>{{hero.name}} details!</h2>\n  <div><label>id: </label>{{hero.id}}</div>\n  <div><label>name: </label><input [(ngModel)]=\"hero.name\" placeholder=\"name\"></div>\n  ",
+        template: "\n  <h2>My Heroes</h2>\n  <ul class=\"heroes\">\n  <li *ngFor=\"let hero of heroes\">\n  <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n  </li>\n  </ul>\n  ",
+        styles: ["\n.selected {\n\tbackground-color: #CFD8DC !important;\n\tcolor: white;\n}\n.heroes {\n\tmargin: 0 0 2em 0;\n\tlist-style-type: none;\n\tpadding: 0;\n\twidth: 15em;\n}\n.heroes li {\n\tcursor: pointer;\n\tposition: relative;\n\tleft: 0;\n\tbackground-color: #EEE;\n\tmargin: .5em;\n\tpadding: .3em 0;\n\theight: 1.6em;\n\tborder-radius: 4px;\n}\n.heroes li.selected:hover {\n\tbackground-color: #BBD8DC ! important;\n\tcolor: white;\n}\n.heroes li:hover {\n\tcolor: #607D8B;\n\tbackground-color: #DDD;\n\tleft: .1em;\n}\n.heroes .text {\n\tposition: relative;\n\ttop: -3px;\n}\n.heroes .badge {\n\tdisplay: inline-block;\n\tfont-size: small;\n\tcolor: white;\n\tpadding: 0.8em 0.7em 0 0.7em;\n\tbackground-color: #607D8B;\n\tline-height: 1em;\n\tposition: relative;\n\tleft: -1px;\n\ttop: -4px;\n\theight: 1.8em;\n\tmargin-right: .8em;\n\tborder-radius: 4px 0 0 4px;\n}\n  "]
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
